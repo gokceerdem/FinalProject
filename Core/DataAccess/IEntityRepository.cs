@@ -15,7 +15,7 @@ namespace Core.DataAccess
         //filter = null --> filtreleme olmayabilir
         List<T> GetAll(Expression<Func<T, bool>> filter = null); //filtreleme, kriterlere göre sorgu getirme
         //system refactoring:
-        T GetT(Expression<Func<T, bool>> filter); // filtreleme zorunlu
+        T Get(Expression<Func<T, bool>> filter); // filtreleme zorunlu
         void Add(T entity);
         void Update(T entity);
         void Delete(T entity);

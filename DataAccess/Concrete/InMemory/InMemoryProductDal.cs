@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 
 namespace DataAccess.Concrete.InMemory //in memory sanki veritabanından geliyor gibi simüle etmek
 {
@@ -78,8 +79,9 @@ namespace DataAccess.Concrete.InMemory //in memory sanki veritabanından geliyor
             return _products.Where(p => p.CategoryId == categoryId).ToList();
         }
 
-        public Product GetT(Expression<Func<Product, bool>> filter)
+        public Product Get(Expression<Func<Product, bool>> filter)
         {
+            Console.WriteLine('1');
             throw new NotImplementedException();
         }
 
@@ -92,6 +94,11 @@ namespace DataAccess.Concrete.InMemory //in memory sanki veritabanından geliyor
             product.CategoryId = product.CategoryId;
             productToUpdate.UnitsInStock = product.UnitsInStock;
 
+        }
+
+        public List<ProductDetailDto> GetProductDetails()
+        {
+            throw new NotImplementedException();
         }
     }
 }

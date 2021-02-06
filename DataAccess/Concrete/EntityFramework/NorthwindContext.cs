@@ -1,11 +1,14 @@
-﻿using System;
+﻿using System.Linq;
 using Entities.Concrete;
+using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Concrete.EntityFramework
 {
     public class NorthwindContext : DbContext //db tabloları ile proje classlarını bağlamak
     {
+        internal IQueryable<ProductDetailDto> result;
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=172.21.176.40"); normalde böyle IP yazılır
@@ -17,5 +20,6 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Order> Orders { get; set; }
     }
 }

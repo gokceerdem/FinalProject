@@ -9,7 +9,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            ProductTest2();
+            ProductTest3();
             //IoC
             //CategoryTest();
         }
@@ -27,7 +27,7 @@ namespace ConsoleUI
         {
             ProductManager productManager = new ProductManager(new InMemoryProductDal());
 
-            foreach (var product in productManager.GetAll())
+            foreach (var product in productManager.GetAll().Data)
             {
                 Console.WriteLine(product.ProductName);
             }
@@ -37,10 +37,30 @@ namespace ConsoleUI
         {
             ProductManager productManager = new ProductManager(new InMemoryProductDal());
 
-            foreach (var product in productManager.GetProductDetails())
+            foreach (var product in productManager.GetProductDetails().Data)
             {
                 Console.WriteLine(product.ProductName + '/' + product.CategoryName);
             }
+        }
+
+
+        private static void ProductTest3()
+        {
+            ProductManager productManager = new ProductManager(new EfProductDal());
+            var result = productManager.GetProductDetails();
+            if(result.Success)
+            {
+                foreach (var product in result.Data)
+                {
+                    Console.WriteLine(product.ProductName + '/' + product.CategoryName);
+                }
+            }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
+
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-namespace Core.Utilities.Results
+﻿namespace Core.Utilities.Results
 {
     //temel voidler için başlangıç
     public interface IResult

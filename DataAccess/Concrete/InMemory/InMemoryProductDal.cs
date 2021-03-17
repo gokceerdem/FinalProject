@@ -16,11 +16,11 @@ namespace DataAccess.Concrete.InMemory //in memory sanki veritabanından geliyor
         public InMemoryProductDal()
         {
             _products = new List<Product> {
-                new Product{PrductId=1, CategoryId = 1, ProductName="bardak" , UnitPrice = 15, UnitsInStock =15},
-                new Product{PrductId=2, CategoryId = 1, ProductName="çatal" , UnitPrice = 500, UnitsInStock =3 },
-                new Product{PrductId=3, CategoryId = 2, ProductName="tel" , UnitPrice = 1500, UnitsInStock =2},
-                new Product{PrductId=4, CategoryId = 2, ProductName="klavye" , UnitPrice = 150, UnitsInStock =65},
-                new Product{PrductId=5, CategoryId = 2, ProductName="fare" , UnitPrice = 85, UnitsInStock =15},
+                new Product{ProductId=1, CategoryId = 1, ProductName="bardak" , UnitPrice = 15, UnitsInStock =15},
+                new Product{ProductId=2, CategoryId = 1, ProductName="çatal" , UnitPrice = 500, UnitsInStock =3 },
+                new Product{ProductId=3, CategoryId = 2, ProductName="tel" , UnitPrice = 1500, UnitsInStock =2},
+                new Product{ProductId=4, CategoryId = 2, ProductName="klavye" , UnitPrice = 150, UnitsInStock =65},
+                new Product{ProductId=5, CategoryId = 2, ProductName="fare" , UnitPrice = 85, UnitsInStock =15},
             };
         }
 
@@ -45,7 +45,7 @@ namespace DataAccess.Concrete.InMemory //in memory sanki veritabanından geliyor
             Product productToDelete = null;//=new Product(); --> yazmak yanlış
 
             foreach (var p in _products) {
-                if(product.PrductId == p.PrductId)
+                if(product.ProductId == p.ProductId)
                 {
                     productToDelete = p;
                 }
@@ -56,7 +56,7 @@ namespace DataAccess.Concrete.InMemory //in memory sanki veritabanından geliyor
 
 
             //LINQ - language integrated query versiyon 2:
-            Product productToDelete = _products.SingleOrDefault(p => p.PrductId == product.PrductId);
+            Product productToDelete = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
             //SingleOrDefault tek tek dolaşmaya yarar
             //first
             //firstordefault da kullanılabilir
@@ -88,7 +88,7 @@ namespace DataAccess.Concrete.InMemory //in memory sanki veritabanından geliyor
         public void Update(Product product)
         {
             //gönderdiğim ürün id'sine sahip olan listedeki ürünü bul
-            Product productToUpdate = _products.SingleOrDefault(p => p.PrductId == product.PrductId);
+            Product productToUpdate = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
             productToUpdate.ProductName = product.ProductName;
             productToUpdate.UnitPrice = product.UnitPrice;
             product.CategoryId = product.CategoryId;

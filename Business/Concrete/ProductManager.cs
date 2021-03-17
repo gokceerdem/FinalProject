@@ -49,10 +49,20 @@ namespace Business.Concrete
             //iş kodları
             //yetkisi var mı?
 
-            if(DateTime.Now.Hour == 22)
+            if(DateTime.Now.Hour == 10)
             {
                 return new ErrorDataResult<List<Product>>(Messages.MaintenanceTime);
-            }
+                // postman çıktısı:
+                //{
+                //"data": null,
+                //"success": false,
+                //"message": "Şu anda işleminizi gerçekleştiremiyoruz"
+                // }
+            
+            
+
+
+        }
 
             // InMemoryProductDal inMemoryProductDal = new InMemoryProductDal(); // bu şekilde yazılırsa sadece inmemory çalışır
             /*fonksiyon ismi public List<Product> GetAll() iken,
@@ -72,8 +82,8 @@ public IDataResult<List<Product>> GetAllByCategoryId(int Id)
 
 public IDataResult<Product> GetById(int productId)
 {
-    //return _productDal.Get(p => p.PrductId == productId);
-    return new SuccessDataResult<Product>(_productDal.Get(p => p.PrductId == productId));
+    //return _productDal.Get(p => p.ProductId == productId);
+    return new SuccessDataResult<Product>(_productDal.Get(p => p.ProductId == productId));
 }
 
 public IDataResult<List<Product>> GetByUnitPrice(decimal min, decimal max)//List<Product> GetByUnitPrice(decimal min, decimal max)
